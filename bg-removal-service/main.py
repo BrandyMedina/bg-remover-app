@@ -6,6 +6,7 @@ import numpy as np
 from scipy import ndimage
 import io
 
+# Crea una aplicacion de FastAPI para manejar peticiones HTTP
 app = FastAPI()
 
 # Se Cargan ambos modelos una sola vez al arrancar el servidor
