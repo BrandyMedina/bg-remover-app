@@ -49,7 +49,12 @@ async def remove_background(
 
     input_bytes = await file.read()
     output_bytes = remove(input_bytes, session=sessions[mode])
-    output_bytes= clean_alpha_edges(output_bytes)
+    # output_bytes= clean_alpha_edges(output_bytes)
+
+    if mode == "model":
+        output_bytes = clean_alpha_edges(output_bytes, threshold=128, erode_pixels=1, blur_radius=2.0)
+    else:
+        output_bytes = clean_alpha_edges(output_bytes, threshold=128, erode_pixels=2, blur_radius=1.5)
 
     return StreamingResponse(
         io.BytesIO(output_bytes),

@@ -7,7 +7,7 @@
 
 .header{
   background-color: rgb(169, 191, 219);
-  padding: 15px 32px;
+  padding: 16px 32px;
   border-bottom: 10px solid #e5e8f0;
   border-radius: 0 0 20px 20px;
   height: auto;
@@ -21,6 +21,7 @@
   -webkit-text-stroke: .5px rgb(77, 74, 138);
 }
 
+/* Layout General */
 .layout{
   display: flex;
   gap: 24px;
@@ -29,6 +30,8 @@
   flex-wrap: wrap;
 }
 
+
+/* Sidebar */
 .sidebar{
   width: 260px;
   display: flex;
@@ -58,6 +61,7 @@
   margin-bottom: 8px;
 }
 
+/* Toggle Modelo / Producto */
 .toggle-group{
   display: flex;
   gap: 8px;
@@ -85,6 +89,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+/* Colores de fondo */
 .color-row{
   display: flex;
   gap: 10px;
@@ -262,10 +267,12 @@
 .result-image-wrapper{
   position: relative;
   aspect-ratio: 1 /1;
-  background: repeating-linear-gradient(#f0f0f0 0% 25%, #ffffff 0% 50%) 50%/20px 20px;
+  background: repeating-conic-gradient(#f0f0f0 0% 25%, #ffffff 0% 50%) 50%/20px 20px;
 }
 
-.result-image-wrapper img{
+/* El canvas de resultado ocupa todo el espacio del wrapper */
+.result-canvas{
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -278,15 +285,41 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+  z-index: 2;
+}
+
+/* Fila de acciones (editar, descargar) debajo de cada resultado */
+.result-actions{
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+}
+
+.edit-btn{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #2f5dff;
+  background: #ffffff;
+  color: #2f5dff;
+  border-radius: 8px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-btn:hover{
+  background: #eef2ff;
 }
 
 .download-btn{
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 10px;
   border: none;
+  border-radius: 8px;
   background: #2f5dff;
   color: #ffffff;
   font-size: 0.5rem;
@@ -298,12 +331,87 @@
   background: #244bd1;
 }
 
-.download-btn svg{
-  width: 16px;
-  height: 16px;
+/* Editor de imagen */
+.editor-overlay{
+  position:fixed ;
+  inset: 0;
+  background: rgba(26, 31, 54, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.editor-box{
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 90vw;
+}
+
+.editor-box h3{
+  font-size: 0.8rem;
+  color: #1a1f36;
+  align-self: flex-start;
+}
+
+.editor-canvas{
+  border-radius: 10px;
+  border: 1px solid #e5e8f0;
+  background: repeating-conic-gradient(#f0f0f0 0% 25%, #ffffff 0%  50%) 50% / 20px 20px;
+  touch-action: none;
+}
+
+.zoom-slider{
+  width: 100%;
+  cursor: pointer;
+}
+
+.editor-actions{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-secondary{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e5e8f0;
+  background: #ffffff;
+  color: #6b7280;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover{
+  background: #f4f6fb;
+}
+
+.btn-primary{
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #2f5dff;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover{
+  background: #244bd1;
 }
 
 
+/* footer */
 .footer {
   padding: 20px 32px;
   text-align: center;
