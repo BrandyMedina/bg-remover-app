@@ -333,19 +333,6 @@ function App() {
             </section>
           )}
 
-          {/* {results.length > 0 && (
-            <section className="preview-section">
-              <h3>Imagenes Seleccionadas</h3>
-              <div className="preview-grid">
-                {previews.map((src, i) => (
-                  <div className="preview-thumb" key={i}>
-                    <img src={src} alt={files[i]?.name} />
-                  </div>
-                ))}
-              </div>
-            </section>
-          )} */}
-
           {results.length > 0 && (
             <section className="results-section">
               <div className="results-header">
