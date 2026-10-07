@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());   //Activa CORS para todas las rutas
 
 const upload = multer({ storage: multer.memoryStorage()} );        //Configura multer para guardar los archivos en memoria RAM
-const BG_REMOVAL_SERVICE_URL = "http://localhost:8000/remove-bg"; //Direccion de microservicio de Python 
+const BG_REMOVAL_SERVICE_URL = process.env.BG_REMOVAL_SERVICE_URL || "http://localhost:8000/remove-bg"; //Direccion de microservicio de Python 
 
 const TARGET_SIZE = 1080;  //tamaño estandar de la imagen 
 

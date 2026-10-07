@@ -42,14 +42,14 @@ def clean_alpha_edges(image_bytes: bytes, threshold: int = 128, erode_pixels: in
 @app.post("/remove-bg")
 async def remove_background(
     file: UploadFile = File(...),
-    mode: str = Form("product")  # "product" o "model", "product" por defecto
+    mode: str = Form("product")  # "product" o "model", "product" por defecto (producto es cuando en la base o si esta solo sin alguna mano)
 ):
     if mode not in sessions:
         mode = "product"  # fallback seguro si se manda algo invalido
 
     input_bytes = await file.read()
     output_bytes = remove(input_bytes, session=sessions[mode])
-    # output_bytes= clean_alpha_edges(output_bytes)
+    
 
     if mode == "model":
         output_bytes = clean_alpha_edges(output_bytes, threshold=128, erode_pixels=1, blur_radius=2.0)

@@ -1,0 +1,22 @@
+services:
+  bg-removal:
+    build: ./bg-removal-service
+    ports: 
+      - "8000:8000"
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - BG_REMOVAL_SERVICE_URL=HTTP://bg-removal:8000/remove-bg
+    depends_on:
+      - bg-removal
+
+  frontend:
+    build: ./frontend
+    ports: 
+      - "5173:80"
+    depends_on:
+      - backend
+
