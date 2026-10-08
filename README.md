@@ -136,4 +136,4 @@ Processes one or more images: calls the AI service and resizes the result to 108
 
 ## Author
 
-Built by [Brandy Medina Cadena] as a personal project.
+Built by Brandy Medina Cadena as a personal project.
