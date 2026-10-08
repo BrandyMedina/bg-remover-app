@@ -21,12 +21,13 @@ A full-stack web application for batch background removal from images. Upload mu
 | Containerization | Docker, Docker Compose |
 
 ## Architecture
-┌─────────────┐ ┌──────────────┐ ┌───────────────────┐
-│ Frontend │ ───▶ │ Backend │ ───▶ │ BG Removal Service │
-│ (React) │ ◀─── │ (Node/Express)│◀─── │ (Python/FastAPI) │
-└─────────────┘ └──────────────┘ └───────────────────┘
-    :5173             :3000              :8000
-
+```text
+┌──────────────┐      ┌───────────────┐      ┌────────────────────┐
+│   Frontend   │ ───▶ │    Backend    │ ───▶ │  BG Removal Service │
+│   (React)    │ ◀─── │ (Node/Express)│ ◀─── │   (Python/FastAPI)  │
+└──────────────┘      └───────────────┘      └────────────────────┘
+     :5173                  :3000                    :8000
+```
 
 
 The frontend uploads images to the Node backend, which forwards them to the Python microservice for AI-based background removal. The resulting transparent image is resized and returned to the frontend, where background color compositing and position/zoom editing happen entirely client-side using the Canvas API.
@@ -86,20 +87,23 @@ npm run dev
 6. Click **Download** to save the final image
 
 ## Project Structure
+
+```text
 bg-remover-app/
-├── bg-removal-service/ # Python microservice (rembg)
-│ ├── main.py
-│ ├── requirements.txt
-│ └── Dockerfile
-├── backend/ # Node/Express API
-│ ├── server.js
-│ ├── package.json
-│ └── Dockerfile
-├── frontend/ # React app
-│ ├── src/
-│ ├── package.json
-│ └── Dockerfile
+├── bg-removal-service/   # Python microservice (rembg)
+│   ├── main.py
+│   ├── requirements.txt
+│   └── Dockerfile
+├── backend/              # Node/Express API
+│   ├── server.js
+│   ├── package.json
+│   └── Dockerfile
+├── frontend/             # React app
+│   ├── src/
+│   ├── package.json
+│   └── Dockerfile
 └── docker-compose.yml
+```
 
 
 ## API Reference
